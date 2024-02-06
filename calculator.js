@@ -14,6 +14,9 @@ function getinput(variable) {
     output = result;
   }
   output = output + variable;
+  if(output.length >= 15){
+    document.getElementById("screen").style.fontSize = "1.5rem";
+  }
   document.getElementById("screen").value = output;
 }
 
@@ -84,6 +87,12 @@ function calculate() {
   } else {
     result = cal(output);
   }
+  if(result.length >= 15){
+    document.getElementById("screen").style.fontSize = "1.5rem";
+  }
+  else{
+    document.getElementById("screen").style.fontSize = "2rem";
+  }
   document.getElementById("screen").value = result;
   output = "";
 }
@@ -121,4 +130,17 @@ function apply(num1, num2, operator){
       break;
   }
   return result;
+}
+
+// Keyboard event
+window.onkeydown = function (e){
+  if((e.key >= 0 && e.key <= 9) || (e.which >= 106 && e.which <= 111)){
+    getinput(e.key);
+  }
+  else if(e.which == 13){
+    calculate();
+  }
+  else if(e.which == 8){
+    pop();
+  }
 }
