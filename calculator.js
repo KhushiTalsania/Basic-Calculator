@@ -40,12 +40,7 @@ function cal(output) {
         operators[ope++] = output[i];
       } else {
         if (precedence(operators[ope - 1], output[i])) {
-          let num = 0;
-          if (operators[ope - 1] == "/") {
-            num = values[top - 2] / values[top - 1];
-          } else if (operators[ope - 1] == "*") {
-            num = values[top - 2] * values[top - 1];
-          }
+          let num = apply(values[top - 2], values[top - 1], operators[ope - 1]);
           top = top - 2;
           ope--;
           values[top++] = num;
@@ -63,26 +58,7 @@ function cal(output) {
   while (ope > 0) {
     ope--;
     top--;
-    let num1 = 0;
-    switch (operators[ope]) {
-      case "/":
-        num1 = values[top - 1] / values[top];
-        break;
-      case "*":
-        num1 = values[top - 1] * values[top];
-        break;
-      case "+":
-        num1 = values[top - 1] + values[top];
-        break;
-      case "-":
-        num1 = values[top - 1] - values[top];
-        break;
-      case "%":
-        num1 = values[top - 1] % values[top];
-        break;
-      default:
-        continue;
-    }
+    let num1 = apply(values[top - 1], values[top], operators[ope]);
     values[top - 1] = num1;
     top = top--;
   }
@@ -94,7 +70,7 @@ function precedence(ope1, ope2) {
   if (
     (ope1 == "+" || ope1 == "-") &&
     (ope2 == "*" || ope2 == "/" || ope2 == "%")
-  ) {
+  ) { 
     return false;
   } else {
     return true;
@@ -122,4 +98,27 @@ function clearscreen() {
 function pop() {
   output = output.slice(0, -1);
   document.getElementById("screen").value = output;
+}
+
+// function for calculate the values
+function apply(num1, num2, operator){
+  let result = 0;
+  switch (operator) {
+    case "/":
+      result = num1 / num2;
+      break;
+    case "*":
+      result = num1 * num2;
+      break;
+    case "+":
+      result = num1 + num2;
+      break;
+    case "-":
+      result = num1 - num2;
+      break;
+    case "%":
+      result = num1 % num2;
+      break;
+  }
+  return result;
 }
