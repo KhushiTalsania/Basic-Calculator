@@ -99,7 +99,7 @@ function pop() {
   output = output.slice(0, -1);
   document.getElementById("screen").value = output;
 }
-
+ 
 // function for calculate the values
 function apply(num1, num2, operator){
   let result = 0;
