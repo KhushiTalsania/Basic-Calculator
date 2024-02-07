@@ -131,7 +131,7 @@ function apply(num1, num2, operator){
   }
   return result;
 }
-<<<<<<< HEAD
+
 
 // Keyboard event
 window.onkeydown = function (e){
@@ -145,5 +145,4 @@ window.onkeydown = function (e){
     pop();
   }
 }
-=======
->>>>>>> 951496bd77e535ed44b593fdf52965baadbcee17
+ 
