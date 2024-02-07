@@ -108,7 +108,7 @@ function pop() {
   output = output.slice(0, -1);
   document.getElementById("screen").value = output;
 }
-
+ 
 // function for calculate the values
 function apply(num1, num2, operator){
   let result = 0;
@@ -131,6 +131,7 @@ function apply(num1, num2, operator){
   }
   return result;
 }
+<<<<<<< HEAD
 
 // Keyboard event
 window.onkeydown = function (e){
@@ -144,3 +145,5 @@ window.onkeydown = function (e){
     pop();
   }
 }
+=======
+>>>>>>> 951496bd77e535ed44b593fdf52965baadbcee17
